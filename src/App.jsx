@@ -9,25 +9,38 @@ import Products from "./Compenent/Products/Products"
 import Categories from "./Compenent/Categories/Categories"
 import Layout from "./Compenent/Layout/Layout"
 import NotFound from "./Compenent/NotFound/NotFound"
+import CounterContextProvider from "./Compenent/Context/CounterCountext";
+import UserContext  from "./Compenent/Context/UserContext"
+import ProtectedRoute from "./Compenent/ProtectedRoute/ProtectedRoute"
+import WishList from "./Compenent/WishList/WishList"
+import ProductDetails from "./Compenent/ProductDetails/ProductDetails"
 
 
 const router = createBrowserRouter([
   {path:'',element:<Layout/>,children:[
-    {index:true,element:<Home/>},
+    {index:true,element:<ProtectedRoute><Home/></ProtectedRoute>},
     {path :'login',element: <Login/>},
-    {path :'register',element: <Register/>},
-    {path :'cart',element: <Cart/>},
-    // {path :'whishlist',element: <Wishlist/>}
-    {path :'products',element: <Products/>},
-    {path :'home',element: <Home/>},
-    {path :'categories',element: <Categories/>},
-    {path :'brands',element: <Brands/>},
-    {path :'*',element: <NotFound/>}
+    {path :'register',element:<Register/> },
+    {path :'cart',element:<ProtectedRoute><Cart/></ProtectedRoute> },
+    {path :'whishlist',element:<ProtectedRoute><WishList/></ProtectedRoute> },
+    {path :'products',element:<ProtectedRoute><Products/></ProtectedRoute> },
+    {path :'ProductDetails/:id',element:<ProtectedRoute><ProductDetails/></ProtectedRoute> },
+    {path :'home',element:<ProtectedRoute><Home/></ProtectedRoute> },
+    {path :'categories',element:<ProtectedRoute><Categories/></ProtectedRoute> },
+    {path :'brands',element:<ProtectedRoute><Brands/></ProtectedRoute> },
+    {path :'*',element:<ProtectedRoute><NotFound/></ProtectedRoute>}
   ]}
 ])
+
 export default function App() {
   return <>
+  <UserContext>
+  <CounterContextProvider>
     <RouterProvider router={router}></RouterProvider>
+    </CounterContextProvider>
+  </UserContext>
+    
+    
   </>
    
 }
