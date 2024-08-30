@@ -14,7 +14,19 @@ import UserContext  from "./Compenent/Context/UserContext"
 import ProtectedRoute from "./Compenent/ProtectedRoute/ProtectedRoute"
 import WishList from "./Compenent/WishList/WishList"
 import ProductDetails from "./Compenent/ProductDetails/ProductDetails"
+import { QueryClient, QueryClientProvider} from "@tanstack/react-query"
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import HeartContextProvider, { HeartContext } from "./Compenent/Context/HeartContext"
+import UserContextProvider from "./Compenent/Context/UserContext"
 
+const queryClient = new QueryClient(
+  {defaultOptions :{
+    queries : {
+      staleTime : 5 * 60 * 1000,
+    }
+  }
+  }
+)
 
 const router = createBrowserRouter([
   {path:'',element:<Layout/>,children:[
@@ -34,14 +46,16 @@ const router = createBrowserRouter([
 
 export default function App() {
   return <>
-  <UserContext>
-  <CounterContextProvider>
-    <RouterProvider router={router}></RouterProvider>
-    </CounterContextProvider>
-  </UserContext>
-    
-    
-  </>
-   
+    <QueryClientProvider client={queryClient}>
+      <HeartContextProvider>
+        <UserContextProvider>
+          <CounterContextProvider>
+            <RouterProvider router={router}></RouterProvider>
+          </CounterContextProvider>
+        </UserContextProvider>
+      </HeartContextProvider>
+  <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>  
+  </> 
 }
 

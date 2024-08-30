@@ -2,37 +2,32 @@ import { useContext, useState } from "react"
 import Style from "./ProductDetails.module.css"
 import { useEffect } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { json, useParams } from "react-router-dom"
 import Loading from "../Loading/Loading"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons"
 import { UserContext } from "../Context/UserContext"
 import Swal from "sweetalert2"
 import { CounterContext } from "../Context/counterCountext"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { HeartContext } from "../Context/HeartContext"
 
 
 
 function ProductDetails() {
 const x = useParams()
-const [isLoading, setIsLoading] = useState(false)
-const [product, setProduct] = useState({})
-const [heart, setHeart] = useState(false)
+const {heart,setHeart} = useContext(HeartContext)
 const {token} = useContext(UserContext)
 const {incCounter} = useContext(CounterContext)
+const queryClient = useQueryClient()
 
-async function getProductDetails(id){
-  setIsLoading(true)
-try {
-  const {data} = await axios(`https://ecommerce.routemisr.com/api/v1/products/${id}`) 
-  console.log(data.data);
-  setProduct(data.data);
-  console.log(product);
-  setIsLoading(false)
-}
-catch (error) {
-  console.error(error);
-}
-}
+const {data:product,isLoading,error,isError} = useQuery({
+  queryKey: ["productDetail"],
+  queryFn: () =>  axios(`https://ecommerce.routemisr.com/api/v1/products/${x.id}`),
+  select:(data) => data.data.data,
+})
+
+
 
 async function addWishList(id){
   console.log(heart);
@@ -52,6 +47,7 @@ async function addWishList(id){
   if(!heart[id]){
     const {data} =  await axios.post('https://ecommerce.routemisr.com/api/v1/wishlist',pId,{headers})
     console.log(data.message);
+    await queryClient.invalidateQueries({ queryKey: ['wishList'] })
     Swal.fire({
       position:"top-end",
       timer:2000,
@@ -63,6 +59,7 @@ async function addWishList(id){
   else{
     const {data} =  await axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,{headers})
     console.log(data.message);
+    await queryClient.invalidateQueries({ queryKey: ['wishList'] })
     Swal.fire({
       position:"top-end",
       timer:2000,
@@ -84,6 +81,7 @@ async function addToCart(id){
     const {data} =  await axios.post('https://ecommerce.routemisr.com/api/v1/cart',pId,{headers})
     console.log(data.message);
     incCounter()
+    await queryClient.invalidateQueries({ queryKey: ['cart'] })
     Swal.fire({
       position:"top-end",
       timer:2000,
@@ -94,13 +92,12 @@ async function addToCart(id){
   
 }
 
-useEffect(()=>{
-  console.log("mounting ProductDetails")
-  getProductDetails(x.id)
-},[])
 
 if(isLoading){
   return <Loading/>
+}
+if(isError){
+  return <h3>{JSON.stringify({error})}</h3>
 }
   return (
   <>
