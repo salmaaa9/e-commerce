@@ -10,6 +10,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import { HeartContext } from "../Context/HeartContext"
 import { useQueryClient } from "@tanstack/react-query"
+import { CartContext } from "../Context/CartContext"
 
 
 
@@ -18,6 +19,7 @@ function ProductCard({p}) {
 const {token} = useContext(UserContext);
 const {incCounter} = useContext(CounterContext)
 const {heart,setHeart} = useContext(HeartContext)
+// const {addToCart} = useContext(CartContext)
 const queryClient = useQueryClient()
 
 useEffect(()=>
@@ -85,7 +87,7 @@ async function addToCart(id){
       
 }
 
-        return<>
+      return<>
         <div className="relative pb-14 group hover:shadow-green-600 cursor-pointer hover:shadow-lg shadow-green-600 border-green-600 p-3 rounded overflow-hidden">
 
         <Link to={`/ProductDetails/${p.id}`}>

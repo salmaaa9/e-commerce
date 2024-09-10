@@ -2,7 +2,7 @@ import axios from "axios";
 import { useFormik } from "formik"
 import { useContext, useEffect, useState } from "react"
 import { FaSpinner } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from 'yup';
 import { UserContext } from "../Context/UserContext";
 
@@ -20,6 +20,7 @@ function Login() {
   const navigate = useNavigate();
   const [errMsg,setErrMsg] =  useState('');
   const [isLoading,setIsLoading] =  useState(false);
+  
 
   async function handleSubmit(values){
     setIsLoading(true)
@@ -114,9 +115,11 @@ function Login() {
   </div>
 
 
+  <Link to={'/forget-password'} className="hover:text-green-600 font-semibold">forgot your Password ?</Link>
   <button disabled={isLoading} type="submit" className="text-white dark:disabled:bg-green-800 disabled:text-gray-400 disabled:hover: bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto absolute end-0 top-full mt-4 px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-    {isLoading?<FaSpinner className="animate-spin"/>:'Submit'}
-    </button>
+    {isLoading? <FaSpinner className="animate-spin"/> :'Submit'}
+  </button>
+
   </form>
    </>
   )

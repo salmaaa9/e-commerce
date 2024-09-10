@@ -1,15 +1,60 @@
 
 
+import { faAmazonPay, faAngrycreative, faCcMastercard, faPaypal } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect } from "react"
+import appStore from "../../assets/apple_store.jpg"
+import googleplay from "../../assets/google.png"
 
 
 
 function Footer() {
     useEffect(()=>{console.log("mounting Footer")},[])
   return<>
-  
+    <footer className="bg-gray-100 py-10 dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <h3 className="text-xl font-semibold mb-2">Get the FreshCart app</h3>
+        <p className="text-gray-600 mb-4">We will send you a link, open it on your phone to download the app.</p>
+        <form className="grid grid-cols-12 gap-4 justify-center mb-6 mt-6">
+          <input
+            type="email"
+            placeholder="Email"
+            className="p-1 border border-gray-300 focus:border-gray-300 focus:ring-0 focus:outline-none rounded-md col-span-9"
+          />
+          <button
+            type="submit"
+            className="p-1 bg-green-600 text-white rounded-md hover:bg-green-700 col-span-3"
+          >
+            Share App Link
+          </button>
+        </form>
 
-<footer className="bg-slate-50 dark:bg-gray-900 fixed-bottom mt-12">
+        <div className="flex justify-between border-y-2 border-gray-200 dark:border-slate-600 py-10 mt-10">
+        <div className="mb-6 flex items-center gap-5">
+          <h4 className="text-lg font-semibold mb-2">Payment Partners</h4>
+          <div className="flex space-x-4">
+            <FontAwesomeIcon icon={faPaypal}/>
+            <FontAwesomeIcon icon={faAmazonPay}/>
+            <FontAwesomeIcon icon={faCcMastercard}/>
+            <FontAwesomeIcon icon={faAngrycreative}/>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          <p className="text-gray-600">get Deleviries with Fresh Cart</p>
+          <a href="#">
+            <img src={appStore} alt="App Store" className="h-9" />
+          </a>
+          <a href="#">
+            <img src={googleplay} alt="Google Play" className="h-9 bg-transparent" />
+          </a>
+        </div>
+        </div>
+        
+      </div>
+    </footer>
+
+{/* <footer className="bg-slate-50 dark:bg-gray-900 fixed-bottom mt-12">
   <div className="mx-auto w-full">
     <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 max-w-5xl m-auto">
       <div>
@@ -115,9 +160,7 @@ function Footer() {
       </div>
     </div>
   </div>
-</footer>
-
-
+</footer> */}
   </>
 }
 

@@ -11,6 +11,7 @@ const [categories, setCategories] = useState([]);
 const [isLoading, setIsLoading] = useState(false);
     
 async function getCategories(){
+  
   setIsLoading(true)
   const {data} = await axios('https://ecommerce.routemisr.com/api/v1/categories')
   console.log(data.data);

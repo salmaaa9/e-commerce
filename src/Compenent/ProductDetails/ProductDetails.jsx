@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import Style from "./ProductDetails.module.css"
 import { useEffect } from "react"
 import axios from "axios"
-import { json, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import Loading from "../Loading/Loading"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons"
@@ -22,7 +22,7 @@ const {incCounter} = useContext(CounterContext)
 const queryClient = useQueryClient()
 
 const {data:product,isLoading,error,isError} = useQuery({
-  queryKey: ["productDetail"],
+  queryKey: [`productDetail`,x.id],
   queryFn: () =>  axios(`https://ecommerce.routemisr.com/api/v1/products/${x.id}`),
   select:(data) => data.data.data,
 })

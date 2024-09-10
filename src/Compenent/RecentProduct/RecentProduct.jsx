@@ -6,17 +6,14 @@ import axios from "axios"
 import ProductCard from "../ProductCard/ProductCard";
 import Loading from "../Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
+import useProduct from "../../Hooks/useProduct";
 
 
 
 function RecentProduct() {
 
 
-const {data:products,isLoading,error,isError} = useQuery({
-  queryKey: ["products"],
-  queryFn: () =>  axios('https://ecommerce.routemisr.com/api/v1/products'),
-  select:(data) => data.data.data,
-})
+const {data:products,isLoading,error,isError} = useProduct()
 
 if(isLoading){
  return<><Loading/></>

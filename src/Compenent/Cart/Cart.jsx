@@ -6,6 +6,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { CounterContext } from "../Context/counterCountext";
 import Loading from "../Loading/Loading";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 
 
@@ -42,7 +43,7 @@ async function updateCart(id,no){
 const {data:cart,isLoading,error,isError} = useQuery({
   queryKey: ["cart"],
   queryFn: () => axios('https://ecommerce.routemisr.com/api/v1/cart',{headers}),
-  select:(data) => data.data.data.products,
+  select:(data) => data.data.data,
 })
 
 if(isLoading){
@@ -61,7 +62,8 @@ async function clearCart(){
 }
 
 console.log(cart)
-cart?.forEach(i => {
+
+cart.products?.forEach(i => {
   total += (i.price * i.count)
   noItems += i.count
 })
@@ -75,17 +77,17 @@ return<>
 
 <div className="flex justify-between">
 <div className="left"><h1 className="text-2xl font-bold mb-6">Cart Shop</h1>
-<p  className="text-xl font-semibold">Total prices : <span className="text-green-600">{total} EGP</span></p>
+<p  className="text-xl font-semibold">Total prices : <span className="text-green-600">{cart.totalCartPrice} EGP</span></p>
 </div>
 <div className="right">
-  <button className="bg-green-600 px-4 py-2 rounded-lg text-lg text-white">Check Out</button>
-  <p className="text-lg">total no of items : <span className="text-green-600">{Counter}</span></p>
+  <Link to={`/checkout/`+cart._id} className="bg-green-600 px-4 py-2 rounded-lg text-lg text-white">Check Out</Link>
+  <p className="text-lg mt-6">total no of items : <span className="text-green-600">{Counter}</span></p>
 </div>
 </div>
 
-{cart.map(function(i){
+{(cart.products)?.map(function(i){
   return<>
-    <div key={i?.id} className="flex items-center justify-between border-b-2 border-green-700 mb-0 p-5">
+    <div key={i.product?.id} className="flex items-center justify-between border-b-2 border-green-700 mb-0 p-5">
       <div className="items-info flex items-center flex-1">
           <img src={i.product.imageCover} alt="" className="w-1/6"/>
           <div className="ms-6">
