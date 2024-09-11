@@ -5,7 +5,7 @@ import { Formik, useFormik } from "formik";
 import * as yup from "yup";
 import { Navigate, useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../../Context/UserContext";
 
 let userSchema = yup.object({
   email: yup.string().required().email(),

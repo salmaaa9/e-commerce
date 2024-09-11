@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // const images = Object.values(import.meta.glob('../../assets/images/*.{png,jpg,jpeg,PNG,JPEG}', { eager: true, as: 'url' }));
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import {  faCartShopping} from '@fortawesome/free-solid-svg-icons';
-import { CounterContext } from "../Context/CounterCountext";
-import { UserContext } from "../Context/UserContext";
-import { NavBarBadges } from "../Context/NavBarBadges";
+import { CounterContext } from "../../Context/CounterCountext";
+import { UserContext } from "../../Context/UserContext";
+import { NavBarBadges } from "../../Context/NavBarBadges";
 
 
 

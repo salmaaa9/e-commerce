@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from "react"
 import { FaSpinner } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import * as yup from 'yup';
-import { UserContext } from "../Context/UserContext";
-import { CartContext } from "../Context/CartContext";
+import { UserContext } from "../../Context/UserContext";
+import { CartContext } from "../../Context/CartContext";
 
 
 

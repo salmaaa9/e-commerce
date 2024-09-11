@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react"
 import { FaSpinner } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from 'yup';
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../../Context/UserContext";
 
 
 

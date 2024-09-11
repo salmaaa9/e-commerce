@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../../Context/UserContext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { CounterContext } from "../Context/counterCountext";
 import Loading from "../Loading/Loading";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { CounterContext } from "../../Context/CounterCountext";
 
 
 
