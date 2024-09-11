@@ -26,6 +26,7 @@ async function getCategories(){
       console.log("mounting CategorySlider")
       getCategories()
     },[])
+    
     let sliderRef = useRef(null);
     const next = () => {
       sliderRef.slickNext();
