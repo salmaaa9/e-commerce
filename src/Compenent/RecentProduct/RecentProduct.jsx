@@ -22,7 +22,7 @@ if(isError){
   return <h3>{JSON.stringify(error)}</h3>
 }
 return <>
-   <div className="m-20">
+   <div className="m-4 sm:m-10 md:m-20">
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products?.map((p)=><ProductCard key={p._id} p = {p}/>)}
       </div>
