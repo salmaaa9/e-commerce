@@ -29,8 +29,8 @@ function Footer() {
           </button>
         </form>
 
-        <div className="flex justify-between border-y-2 border-gray-200 dark:border-slate-600 py-10 mt-10">
-        <div className="mb-6 flex items-center gap-5">
+        <div className="flex flex-col md:flex-row justify-between border-y-2 border-gray-200 dark:border-slate-600 py-10 mt-10">
+        <div className="mb-6 flex items-center">
           <h4 className="text-lg font-semibold mb-2">Payment Partners</h4>
           <div className="flex space-x-4">
             <FontAwesomeIcon icon={faPaypal}/>
@@ -40,7 +40,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-col md:flex-row items-center space-x-4">
           <p className="text-gray-600">get Deleviries with Fresh Cart</p>
           <a href="#">
             <img src={appStore} alt="App Store" className="h-9" />

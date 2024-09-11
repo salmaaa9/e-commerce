@@ -111,7 +111,7 @@ async function addToCart(id){
 
         {/* heart and add to cart */}
         <div className="absolute bottom-3 flex gap-3 justify-between overflow-hidden">
-        <button onClick={()=>{addToCart(p.id)}} className="bg-green-600 py-2 px-24 rounded-md text-center translate-y-52 group-hover:translate-y-0 transition duration-200 ease-in-out">+ add</button>
+        <button onClick={()=>{addToCart(p.id)}} className="bg-green-600 py-1 md:py-2 px-3 sm:px-16 md:px-24 rounded-md text-center translate-y-52 group-hover:translate-y-0 transition duration-200 ease-in-out">+ add</button>
         <FontAwesomeIcon  onClick={()=>{addWishList(p.id)}} className = {`text-2xl ${heart[p.id] && 'text-red-700'} `} icon={faHeart}/>
         </div>
 

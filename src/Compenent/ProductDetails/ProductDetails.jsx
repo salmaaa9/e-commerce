@@ -101,13 +101,13 @@ if(isError){
 }
   return (
   <>
-  <div className="grid sm:grid-cols-12 m-20 items-center">
+  <div className="grid sm:grid-cols-12 m-6 sm:m-10 md:m-20 items-center">
     <div className="col-span-4">
       <img src={product?.imageCover} alt={product?.title} className="w-10/12"/>
     </div>
     <div className="col-span-8 ">
       
-      <div className="flex justify-start gap-40">
+      <div className="flex justify-start gap-2 sm:gap-20 md:gap-40">
       
       <div className="left">
       <h1 className="text-3xl mb-3">{product?.title}</h1>

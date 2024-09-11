@@ -26,7 +26,7 @@ async function getCategories(){
       console.log("mounting CategorySlider")
       getCategories()
     },[])
-    
+
     let sliderRef = useRef(null);
     const next = () => {
       sliderRef.slickNext();
@@ -83,7 +83,7 @@ async function getCategories(){
               return ( 
                 <div className="mt-10 m-auto" key={category.id}>
                   <img src={category.image} alt="" className="h-[200px] w-full object-cover"/>
-                  <h2 className="text-2xl font-bold">{category.name}</h2>
+                  <h2 className="text-2xl font-bold text-center md:text-start">{category.name}</h2>
                 <div/>
                 </div>
               )})}
