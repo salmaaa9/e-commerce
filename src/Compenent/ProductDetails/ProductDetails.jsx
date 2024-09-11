@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons"
 import { UserContext } from "../../Context/UserContext"
 import Swal from "sweetalert2"
-import { CounterContext } from "../../Context/counterCountext"
+import { CounterContext } from "../../Context/CounterCountext"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { HeartContext } from "../../Context/HeartContext"
 

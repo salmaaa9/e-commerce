@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons"
 import Swal from 'sweetalert2'
 import { UserContext } from "../../Context/UserContext";
-import { CounterContext } from "../../Context/counterCountext"
+import { CounterContext } from "../../Context/CounterCountext"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { HeartContext } from "../../Context/HeartContext"

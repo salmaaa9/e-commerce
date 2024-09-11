@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect} from "react"
 import { UserContext } from "../../Context/UserContext";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../Loading/Loading";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { CounterContext } from "../../Context/CounterCountext";
+import { CounterContext } from "../../Context/CounterCountext"
 
 
 
