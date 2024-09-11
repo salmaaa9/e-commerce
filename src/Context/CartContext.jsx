@@ -1,7 +1,7 @@
 import {createContext, useContext, useEffect, useState}  from "react";
 import { UserContext } from "./UserContext";
 import axios from "axios";
-import { CounterContext } from "./counterCountext";
+import { CounterContext } from "./CounterCountext";
 import { QueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
