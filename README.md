@@ -17,9 +17,10 @@ Detailed Product Pages: Each product page provides comprehensive information, in
 Shopping Cart Functionality: Users can add, remove, and adjust quantities of items in their cart, with a dynamic cart summary that updates in real-time.
 ![Screenshot 2024-11-10 215744](https://github.com/user-attachments/assets/fbeed4c8-7ced-495a-9397-e848ddf22092)
 Secure Checkout Process: The checkout system is secure, ensuring the protection of user data.
+
 Technologies Used
 Frontend: The site utilizes [React/Vue/Angular/Other] for dynamic, component-based UI rendering.
-making use of restful api provided by route academy for backend integration
+making use of restful api provided by route academy for backend integration.
 Deployment: The website is deployed on Vercel, providing fast loading speeds and a reliable online presence.
 
 Future Enhancements
